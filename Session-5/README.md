@@ -1,4 +1,4 @@
-# Assignment 5
+# Assignment 5 - Rahul Jain, Ashish Jain
 
 ## Dataset : MNIST
 
