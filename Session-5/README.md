@@ -49,3 +49,15 @@ Best Test Accuracy: 99.23
 
 Analysis: Batch normalization reduces internal covariate shift by controlling the mean and variance of input distributions helping in faster convergence. From the above network result we can abserve that its overfitting and with the help of dropout and image augmentation we can reduce this overfitting and acheive the required target
 
+#### Step 3:
+
+##### Results:
+
+Parameters: 6,765
+
+Best Train Accuracy: 99.49
+
+Best Test Accuracy: 99.30
+
+Analysis: Using dropout have reduce the overfitting but still we are not able to achieve required accuracy, we will next try to implement image augmentation to see if it helps in improving network accuracy
+
