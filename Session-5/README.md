@@ -5,7 +5,9 @@
 ## Target : <8K Parameters, Validation Accuracy : 99.4
 
 ### Absract: 
-```Design a network to achieve validation accuracy of 99.4 using less than 8K parameters. We had design a network with 7,668 parameters was able to achieve validation accuracy of 99.41 using regularization, dropout, image augmentation and then we reduced the parameters further to 6,765 parameters and were able to acheive validation accuracy of 99.52 %```
+```
+Design a network to achieve validation accuracy of 99.4 using less than 8K parameters. We had design a network with 7,668 parameters was able to achieve validation accuracy of 99.41 using regularization, dropout, image augmentation and then we reduced the parameters further to 6,765 parameters and were able to acheive validation accuracy of 99.52 %
+```
 
 ### Experiment:
 
