@@ -9,11 +9,11 @@
 #### Experiment:
 
 ##### Step 1:
+
+##### Designed a basic network with 49,248 paramteres:
+
+##### Results:
 ```
-Designed a basic network with 49,248 paramteres:
-
-Results:
-
 Parameters: 49,248
 
 Best Train Accuracy: 99.61
@@ -21,11 +21,11 @@ Best Train Accuracy: 99.61
 Best Test Accuracy: 99.16
 
 Analysis: The model parameters exceeds the required target and based on the training and test result we can see that the network is overfitting but still we can achieve the required target, next step is to reduce the parameters
+```
+##### Reduced basic network parameters from 49,248 to 7,668 and then to 6,633 
 
-Reduced basic network parameters from 49,248 to 7,668 and then to 6,633 
-
-Results:
-
+##### Results:
+```
 Parameters: 6,633
 
 Best Train Accuracy: 99.24
