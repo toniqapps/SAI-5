@@ -13,7 +13,7 @@ Design a network to achieve validation accuracy of 99.4 using less than 8K param
 
 #### Step 1:
 
-##### Designed a basic network with 49,248 paramteres:
+##### 1. Designed a basic network with 49,248 paramteres:
 
 ##### Results:
 
@@ -25,7 +25,7 @@ Best Test Accuracy: 99.16
 
 Analysis: The model parameters exceeds the required target and based on the training and test result we can see that the network is overfitting but still we can achieve the required target, next step is to reduce the parameters
 
-##### Reduced basic network parameters from 49,248 to 7,668 and then to 6,633 
+##### 2. Reduced basic network parameters from 49,248 to 7,668 and then to 6,633 
 
 ##### Results:
 
@@ -36,4 +36,16 @@ Best Train Accuracy: 99.24
 Best Test Accuracy: 98.97
 
 Analysis: After multiple regression, 7,668 parametersgave us traininig accuracy of 99.24 and test accuracy of 98.94 and based on the result we decided to use 6,633 as our target parameters
+
+#### Step 2:
+
+##### Results:
+
+Parameters: 6,765
+
+Best Train Accuracy: 99.81
+
+Best Test Accuracy: 99.23
+
+Analysis: Batch normalization reduces internal covariate shift by controlling the mean and variance of input distributions helping in faster convergence. From the above network result we can abserve that its overfitting and with the help of dropout and image augmentation we can reduce this overfitting and acheive the required target
 
