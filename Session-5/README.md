@@ -61,3 +61,29 @@ Best Test Accuracy: 99.30
 
 Analysis: Using dropout have reduce the overfitting but still we are not able to achieve required accuracy, we will next try to implement image augmentation to see if it helps in improving network accuracy
 
+#### Step 4:
+
+##### Results:
+
+Parameters: 6,765
+
+Best Train Accuracy: 99.28
+
+Best Test Accuracy: 99.40
+
+Analysis: Based on the result we can observe that network is underfitting but that is because we are trying to force our network to learn harder on train data. Using image augmentation has improved our network capacity and was able to achieve required target with 6,765 parameters
+
+#### Step 5:
+
+##### Results:
+
+Parameters: 6,765
+
+Best Train Accuracy: 98.30
+
+Best Test Accuracy: 99.52
+
+Analysis: We have fine tuned dropout from 0.02 to 0.01. Using StepLR and starting learning rate at 0.1 and reducing by 0.5 after every 5th epoch. Based on the result learning rate has helped acheive test accuracy much faster and consistently
+
+Problem : We had runned this network multiple times and was not able to hit the same accuracy again and again the accuracy varied from 99.39 to 99.52, but every time the result where consistent
+
