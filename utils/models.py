@@ -84,3 +84,67 @@ class MNIST_S6(nn.Module):
         x = self.conv8(x)
         x = x.view(-1, 10)
         return F.log_softmax(x, dim=-1)
+    
+    
+    
+class CIFAR10_S7(nn.Module):
+    
+    def conv_block (self, in_channels, out_channels, kernel_size, padding = 1) :
+        return nn.Sequential(
+              nn.Conv2d (in_channels = in_channels, out_channels = out_channels, kernel_size = kernel_size, padding = padding, bias = False),
+              nn.ReLU(),
+              nn.BatchNorm2d(out_channels),
+              nn.Dropout(0.1))
+    
+    def trans_block (self, in_channels, out_channels):
+      return nn.Sequential(
+              nn.MaxPool2d(2, 2),
+              nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size = 1, padding = 0, bias = False))
+      
+    def dep_sep_block (self, in_channels, out_channels):
+      return nn.Sequential(
+            nn.Conv2d(in_channels = in_channels, out_channels = in_channels, kernel_size = 3, stride=1, padding = 1, bias = False, groups = in_channels),
+            nn.Conv2d(in_channels = in_channels, out_channels = out_channels, kernel_size = 1, stride=1, padding = 0, bias = False, groups = 1),
+            nn.ReLU(),
+            nn.BatchNorm2d(out_channels),
+            nn.Dropout(0.1))
+      
+    def dilated_block (self, in_channels, out_channels):
+      return nn.Sequential(
+          nn.Conv2d(in_channels = in_channels, out_channels = out_channels, kernel_size = 3, stride=1, padding = 2, bias = False, dilation = 2),
+          nn.ReLU(),
+          nn.BatchNorm2d(out_channels),
+          nn.Dropout(0.1))
+      
+    def out_block(self, in_channels, kernel_size = 1):
+      return nn.Sequential(nn.Conv2d(in_channels=in_channels, out_channels=10, kernel_size = kernel_size, padding = 0, bias = False))
+
+    def __init__(self, opts=[]):
+        super(Net, self).__init__()
+        self.conv1 = self.conv_block(3, 64, 3)
+        self.conv2 = self.conv_block(64, 128, 3)
+        self.trans1 = self.trans_block(128, 32)
+        self.sep = self.dep_sep_block(32, 64)
+        self.conv3 = self.conv_block(64, 128, 3)
+        self.trans2 = self.trans_block(128, 32)
+        self.dil = self.dilated_block(32, 64)
+        self.conv4 = self.conv_block(64, 128, 3)
+        self.trans3 = self.trans_block(128, 32)
+        self.gap = nn.Sequential(nn.AvgPool2d(kernel_size=4))
+        self.out = self.out_block(32, 1)
+        
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.conv2(x)
+        x = self.trans1(x)
+        x = self.sep(x)
+        x = self.conv3(x)
+        x = self.trans2(x)
+        x = self.dil(x)
+        x = self.conv4(x)
+        x = self.trans3(x)
+        x = self.gap(x)
+        x = self.out(x)
+        x = x.view(-1, 10)
+        return F.log_softmax(x, dim=-1)
