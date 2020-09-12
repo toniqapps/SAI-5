@@ -19,3 +19,10 @@ def mnist_transforms():
                                         ])
   
   return train_transforms, test_transforms
+
+
+# Train Phase transformations
+def cifar10_transforms():
+  transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+  
+  return transform, transform
